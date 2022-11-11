@@ -31,11 +31,3 @@ main, #app, #root {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-.MuiTablePagination-selectLabel, .MuiSelect-select, .MuiTablePagination-actions, .MuiTablePagination-select, .MuiTablePagination-selectLabel,.MuiTablePagination-selectIcon {
-  display: none !important;
-}
-
-.MuiTablePagination-displayedRows{
-  margin-right: 20px;
-}

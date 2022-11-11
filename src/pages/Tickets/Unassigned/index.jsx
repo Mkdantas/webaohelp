@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Button, Typography, useTheme } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { tokens } from '../../../theme';
 import { mockDataTeam } from '../../../data/MockData';
@@ -8,12 +8,27 @@ import Header from '../../../components/Header'
 const Unassigned = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const access = 'Agent'
 
     const columns = [
         { field: "id", headerName: 'Case', sortable: false, selectable: false },
         { field: "name", headerName: 'Nome', flex: 0.5, cellClassName: "name-column--cell" },
         { field: "email", headerName: 'Email', flex: 0.5 },
-        { field: "age", headerName: 'Descrição do problema', flex: 2},
+        { field: "age", headerName: 'Descrição do problema', flex: 1},
+        { field: "action", headerName: '', flex: 0.5, renderCell: () => {
+           if(access !== 'Agent'){
+            return (
+                <Button variant="contained" color="secondary">Take</Button>
+            )
+           } else {
+            return(
+                <>
+                <Button variant="contained" color="secondary" sx={{mr: 1}}>On call</Button>
+                <Button variant="contained" color="error">Delete</Button>
+                </>
+            )
+           }
+        }}
 
     ]
     return (
@@ -47,6 +62,12 @@ const Unassigned = () => {
                     "& .MuiCheckbox-root": {
                         color: `${colors.greenAccent[200]} !important`,
                     },
+                    "& .MuiTablePagination-selectLabel, .MuiSelect-select, .MuiTablePagination-actions, .MuiTablePagination-select, .MuiTablePagination-selectLabel,.MuiTablePagination-selectIcon": {
+                        display: 'none !important'
+                    }, 
+                    "& .MuiTablePagination-displayedRows": {
+                        marginRight: '20px'
+                    }
                 }}>
                 <DataGrid
                     sortingMode='server'
@@ -89,6 +110,12 @@ const Unassigned = () => {
                     "& .MuiCheckbox-root": {
                         color: `${colors.greenAccent[200]} !important`,
                     },
+                    "& .MuiTablePagination-selectLabel, .MuiSelect-select, .MuiTablePagination-actions, .MuiTablePagination-select, .MuiTablePagination-selectLabel,.MuiTablePagination-selectIcon": {
+                        display: 'none !important'
+                    }, 
+                    "& .MuiTablePagination-displayedRows": {
+                        marginRight: '20px'
+                    }
                 }}>
                 <DataGrid
                     sortingMode='server'
