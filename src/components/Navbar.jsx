@@ -113,7 +113,7 @@ const Navbar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Filas
+              {isCollapsed ? '' : 'Filas'}
             </Typography>
             <Item
               title="SME"
@@ -142,7 +142,7 @@ const Navbar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Relatórios
+              {isCollapsed ? '' : 'Relatórios'}
             </Typography>
             <Item
               title="Tickets Abertos"
